@@ -6,11 +6,11 @@ i = 1
     play choose(chord(:c1, :minor)), release: 8, cutoff: rrand(70, 130)
     sleep 4
     if i == 1
-      sample "/Users/mkv/Documents/dev/SonicPi/mrsocke/TB_01.flac"
+      sample "/Users/mkv/Documents/dev/SonicPi/mrsocke/TB_01.flac", amp: 2
     elsif i == 2
-      sample "/Users/mkv/Documents/dev/SonicPi/mrsocke/TB_02.flac"
+      sample "/Users/mkv/Documents/dev/SonicPi/mrsocke/TB_02.flac", amp: 2
     elsif i == 3
-      sample "/Users/mkv/Documents/dev/SonicPi/mrsocke/TB_03.flac"
+      sample "/Users/mkv/Documents/dev/SonicPi/mrsocke/TB_03.flac", amp: 2
     end
     sleep 4
     i += 1
@@ -25,12 +25,34 @@ define :chord_player do |root| #repeats|
 end
 
 in_thread do
-  loop do
+  live_loop :steady do
     sample :perc_impact1, beat_stretch: 0.3, amp: 0.5
     sleep 0.3
     sample :perc_impact2, amp: 0.3, rate: -1
     sleep 0.3
   end
+end
+
+j = 1
+
+in_thread do
+  with_fx :echo do
+    
+    live_loop :happyb do
+      sleep 10
+      if j == 1
+        sample "/Users/mkv/Documents/dev/SonicPi/mrsocke/TB_04.flac", amp: 2
+      elsif j == 2
+        sample "/Users/mkv/Documents/dev/SonicPi/mrsocke/TB_04.flac", amp: 2, pitch: 8
+      elsif j == 3
+        sample "/Users/mkv/Documents/dev/SonicPi/mrsocke/TB_04.flac", amp: 4, pitch: -8
+      else
+        sample "/Users/mkv/Documents/dev/SonicPi/mrsocke/TB_04.flac"
+      end
+      j += 1
+    end
+  end
+  
 end
 
 sleep 5
