@@ -1,13 +1,13 @@
 #Windows
-#TB_01 = "C:\Samples\ThommyBoy\TB_01.flac"
-#TB_02 = "C:\Samples\ThommyBoy\TB_02.flac"
-#TB_03 = "C:\Samples\ThommyBoy\TB_03.flac"
-#TB_04 = "C:\Samples\ThommyBoy\TB_04.flac"
+TB_01 = "C:/Samples/ThommyBoy/TB_01.flac"
+TB_02 = "C:/Samples/ThommyBoy/TB_02.flac"
+TB_03 = "C:/Samples/ThommyBoy/TB_03.flac"
+TB_04 = "C:/Samples/ThommyBoy/TB_04.flac"
 #Unix
-TB_01 = "/Samples/ThommyBoy/TB_01.flac"
-TB_02 = "/Samples/ThommyBoy/TB_02.flac"
-TB_03 = "/Samples/ThommyBoy/TB_03.flac"
-TB_04 = "/Samples/ThommyBoy/TB_04.flac"
+#TB_01 = "/Samples/ThommyBoy/TB_01.flac"
+#TB_02 = "/Samples/ThommyBoy/TB_02.flac"
+#TB_03 = "/Samples/ThommyBoy/TB_03.flac"
+#TB_04 = "/Samples/ThommyBoy/TB_04.flac"
 
 i = 1
 3.times do
