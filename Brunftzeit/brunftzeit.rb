@@ -1,5 +1,8 @@
 live_loop :my do
-  rep = rrand(4,8)
+  
+  rep = rrand(4,12)
+  sleep rep*(sample_duration :bass_drop_c)
+  
   rep.times do
     sample :bass_drop_c, amp: 0.35, rate: -1
     sleep 0.15
@@ -9,7 +12,6 @@ live_loop :my do
     sample :bass_drop_c, amp: 0.35
     sleep 0.15
   end
-  sleep 5*(sample_duration :bass_drop_c)
 end
 
 live_loop :lopo1 do
