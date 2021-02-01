@@ -32,9 +32,10 @@ live_loop :drums do
         sample :drum_snare_hard, amp: 0.3, rate: rrand(-0.7, -1)
         sleep 1.5
       end
+      
     end
     
-    n.times do
+    (n-2).times do
       sleep 0.5
       sample :drum_bass_hard
       sleep 0.5
