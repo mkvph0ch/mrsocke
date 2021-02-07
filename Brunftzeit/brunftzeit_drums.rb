@@ -6,14 +6,27 @@ live_loop :drums do
   if i%2 == 0
     
     1.times do
-      sample :drum_bass_hard
-      sleep 0.25
-      sample :drum_bass_hard
-      sleep 0.3
-      sample :drum_bass_hard
       sleep 0.5
-      sample :drum_bass_hard
-      sleep 2
+      a1=rrand(0.8,1)
+      print(a1)
+      sample :drum_bass_hard, amp: a1
+      sleep 0.25
+      a2=rrand(0.5,0.7)
+      print(a2)
+      sample :drum_bass_hard, amp: a2
+      sleep 0.3
+      a3=rrand(0.5,0.7)
+      print(a3)
+      with_fx :ping_pong do
+        with_fx :krush, mix: 0.75 do
+          sample :drum_bass_hard, amp: a3#, rate: 0.5
+          play 45, amp: 0.2
+          sleep 0.5
+        end
+        sample :drum_bass_hard, amp: a1
+        sleep 0.75
+      end
+      
     end
     
   else

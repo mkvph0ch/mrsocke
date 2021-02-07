@@ -1,3 +1,9 @@
+#2.times do
+#  #sample :loop_garzul
+#  use_synth :prophet
+#  play choose(chord(:c1, :minor)), release: 8, cutoff: rrand(70, 130)
+#  sleep 8
+#end
 
 live_loop :foo do
   #sample :loop_garzul
@@ -21,13 +27,16 @@ live_loop :drums do
   sample :drum_heavy_kick
   sample :bass_thick_c
   sleep 0.3
-  sample :drum_tom_lo_hard, rate: 0.6
-  sleep 1.7
+  sample :drum_snare_hard
+  sleep 0.05
+  sample :drum_snare_hard, rate: rrand(1.5, 2.5), amp: rrand(0.5, 1)
+  sleep 0.05
+  sample :drum_snare_hard, rate: rrand(3.5, 4.5), amp: rrand(0.5, 1)
+  sleep 1.6
   sample :drum_tom_lo_soft, rate: 0.3
   sleep 2
   sample :drum_heavy_kick, decay: 1.2
-  sample :bass_drop_c, attack: 1.5, amp: 0.6, rate: 0.7
-  
+  sample :bass_drop_c, attack: 1.5, amp: 0.7, rate: rrand(0.4, 0.8)
 end
 
 
