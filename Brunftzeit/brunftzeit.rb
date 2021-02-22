@@ -1,6 +1,12 @@
 i=1
 n=8
 
+live_loop :bg do
+  use_synth :dtri
+  play scale(40, :major_pentatonic).choose, amp: 0.8, release: 0.5 if spread(11, 16).tick
+  sleep 0.25
+end
+
 live_loop :drums do
   
   if i%2 == 0
@@ -62,7 +68,7 @@ end
 
 live_loop :bass_bg do
   
-  rep = rrand(4,8)
+  rep = rrand(6,16)
   sleep rep*(sample_duration :bass_drop_c)
   
   with_fx :panslicer, mix: 1, phase: 5, invert_wave: 1, wave: 3 do
