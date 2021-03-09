@@ -3,30 +3,31 @@ use_bpm 180
 live_loop :drums do
   3.times do
     2.times do
-      sample :drum_bass_hard
+      sample :drum_bass_hard, pan:  0.05
       sleep 0.5
+
     end
     1.times do
       #sleep 0.25
       #sample :drum_snare_hard
       #sample :drum_heavy_kick
       #sleep 0.25
-      sample :drum_snare_hard
+      sample :drum_snare_hard, pan:  0.05
       sleep 1
     end
   end
   1.times do
     with_fx :pitch_shift, pitch: [0, 0.05, 0.1, 0.15, 0.2].tick do
       2.times do
-        sample :drum_heavy_kick
+        sample :drum_heavy_kick, pan:  0.05
         sleep 0.25
-        sample :drum_heavy_kick
+        sample :drum_heavy_kick, pan:  0.05
         sleep 0.25
       end
       1.times do
         #sleep 0.25
         #sample :drum_snare_hard
-        sample :drum_heavy_kick
+        sample :drum_heavy_kick, pan:  0.05
         #sleep 0.25
         sample :drum_cymbal_pedal
         sleep 1
@@ -37,22 +38,26 @@ end
 
 
 live_loop :hihat do
-  sync :drums
-  2.times do
-    sleep 1.5
+
+    sync :drums
+    2.times do
+      sleep 1.5
+    end
+    15.times do
+
+        sample :drum_cymbal_closed, amp: 0.3
+        sleep 0.2
+
+    end
+    3.times do
+      sleep 1.5
+    end
   end
-  15.times do
-    sample :drum_cymbal_closed, amp: 0.3, rate: [rrand(0.8,1.2),rrand(-0.8, -1.2)].tick
-    sleep 0.1
-  end
-  3.times do
-    sleep 1.5
-  end
-end
+
 
 live_loop :bass do
   use_synth :fm
-  play scale(:c2, :major_pentatonic).choose, release: 1, amp: 3
+  play scale(:c2, :major_pentatonic).choose, release: [1,1.5].choose, amp: 1.5, pan: -0.05
   sleep [0.5, 1, 1.5].choose
 end
 
