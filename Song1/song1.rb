@@ -39,14 +39,14 @@ end
 live_loop :hihat do
   sync :drums
   2.times do
-    sleep 1.5
+    sleep 1.5 # wäre hier 2*1.5 nicht besser als der do..end loop?
   end
   15.times do
     sample :drum_cymbal_closed, amp: 0.3, rate: [rrand(0.8,1.2),rrand(-0.8, -1.2)].tick
     sleep 0.1
   end
   3.times do
-    sleep 1.5
+    sleep 1.5 # wäre hier 3*1.5 nicht besser als der do..end loop?
   end
 end
 
