@@ -48,19 +48,12 @@ live_loop :hihat do
   3.times do
     sleep 1.5
   end
-  
 end
 
 live_loop :bass do
-  use_synth :tb303
-  play :c2, attack: 0, release: 0.25, cutoff: rrand(60, 110)
-  sleep 0.25
-  play :c2, attack: 0, release: 0.25, cutoff: rrand(60, 110)
-  sleep 2
-  play :e2, attack: 0, release: 0.25, cutoff: rrand(60, 110)
-  sleep 0.75
-  play :f2, attack: 0, release: 0.25, cutoff: rrand(60, 110)
-  sleep 1
+  use_synth :fm
+  play scale(:c2, :major_pentatonic).choose, release: 1, amp: 3
+  sleep [0.5, 1, 1.5].choose
 end
 
 #live_loop :melody do
