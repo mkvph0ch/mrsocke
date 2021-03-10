@@ -100,3 +100,10 @@ end_n.times do
   end
   end_i = end_i + 1
 end
+
+sample :drum_splash_soft
+
+with_fx :panslicer, mix: 1 do
+  sample :misc_cineboom, amp: 3
+end
+
