@@ -1,6 +1,8 @@
 use_bpm 220
 
+###############################
 #FUNCTIONS
+###############################
 define :hihat do |n,sndolf|
   n.times do
     use_random_seed rrand(0,80)
@@ -29,7 +31,9 @@ define :hihat do |n,sndolf|
   end
 end
 
-
+###############################
+#SONG
+###############################
 
 live_loop :drums do
   3.times do
