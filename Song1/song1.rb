@@ -1,4 +1,35 @@
-use_bpm 180
+use_bpm 220
+
+#FUNCTIONS
+define :hihat do |n,sndolf|
+  n.times do
+    use_random_seed rrand(0,80)
+    if sndolf == 1
+      4.times do
+        sample :sn_dolf
+        sleep 0.2
+      end
+    end
+    #sync :drums
+    2.times do
+      2.times do
+        sleep 1.5 # wäre hier 2*1.5 nicht besser als der do..end loop?
+      end
+      15.times do
+        sample :drum_cymbal_closed, amp: 0.3, rate: [rrand(0.8,1.2),rrand(-0.8, -1.2)].choose
+        sleep 0.1
+      end
+      3.times do
+        with_fx :ping_pong do
+          sleep 1.5 # wäre hier 3*1.5 nicht besser als der do..end loop?
+        end
+    sleep 6
+    end
+  end
+  end
+end
+
+
 
 live_loop :drums do
   3.times do
@@ -36,25 +67,60 @@ live_loop :drums do
   end
 end
 
+in_thread do
+  hihat 6,0
+end
 
-live_loop :hihat do
+
+3.times do
   sync :drums
   2.times do
+    sample :ambi_choir, rate: rrand(-1,1), amp: 0.7, pan: -0.5
     sleep 1.5 # wäre hier 2*1.5 nicht besser als der do..end loop?
   end
   15.times do
-    sample :drum_cymbal_closed, amp: 0.3, rate: [rrand(0.8,1.2),rrand(-0.8, -1.2)].tick
+    #sample :drum_cymbal_closed, amp: 0.3, rate: [rrand(0.8,1.2),rrand(-0.8, -1.2)].tick
     sleep 0.1
   end
   3.times do
-    sleep 1.5 # wäre hier 3*1.5 nicht besser als der do..end loop?
+    with_fx :ping_pong do
+      sample :ambi_choir, rate: rrand(-1,1), amp: 1, pan: 0.5
+      sleep 1.5 # wäre hier 3*1.5 nicht besser als der do..end loop?
+    end
   end
+end
 
+in_thread do
+  hihat 5,1
+end
 
 live_loop :bass do
   use_synth :fm
-  play scale(:c2, :major_pentatonic).choose, release: [1,1.5].choose, amp: 1.5, pan: -0.05
-  sleep [0.5, 1, 1.5].choose
+  with_fx :krush, mix: 0.25 do
+    play scale([:c2,:c3].choose, :minor_pentatonic).tick, release: [1,1.5].choose, amp: 1.5, pan: -0.05
+    sleep [0.5, 1, 1.5].choose
+  end
+end
+
+
+sleep 60
+
+3.times do
+  sync :drums
+  2.times do
+    sample :ambi_choir, rate: rrand(-1,1), amp: 0.7, pan: -0.5
+    sleep 1.5 # wäre hier 2*1.5 nicht besser als der do..end loop?
+  end
+  15.times do
+    #sample :drum_cymbal_closed, amp: 0.3, rate: [rrand(0.8,1.2),rrand(-0.8, -1.2)].tick
+    sleep 0.1
+  end
+  3.times do
+    #with_fx :ping_pong do
+      sample :ambi_soft_buzz, rate: rrand(-1,1), amp: 1, pan: 0.5
+      sleep 1.5 # wäre hier 3*1.5 nicht besser als der do..end loop?
+    #end
+  end
 end
 
 #live_loop :melody do
