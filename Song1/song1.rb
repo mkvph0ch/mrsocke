@@ -1,4 +1,5 @@
 use_bpm 220
+use_debug false
 
 ###############################
 #FUNCTIONS
@@ -34,38 +35,63 @@ end
 ###############################
 #SONG
 ###############################
+a = 50
+b = 49.95
+myamp = [0.35, 0.4, 0.45, 0.5]
 
-live_loop :drums do
-  3.times do
-    2.times do
-      sample :drum_bass_hard, pan:  0.05
-      sleep 0.5
+sleep 1
 
-    end
-    1.times do
-      #sleep 0.25
-      #sample :drum_snare_hard
-      #sample :drum_heavy_kick
-      #sleep 0.25
-      sample :drum_snare_hard, pan:  0.05
-      sleep 1
-    end
+in_thread do
+  use_synth :hoover
+  4.times do
+    play a=a-1, attack: 1, release: 100, amp: myamp.tick
+    play b=b-1, attack: 1, release: 100, amp: myamp.tick
+    #play 80, amp: [1, 0.8, 0.5, 0.8].tick, release: 5
+    #play 79.95, amp: [1, 0.8, 0.5, 0.8].tick, release: 5
+    sleep 10
   end
-  1.times do
-    with_fx :pitch_shift, pitch: [0, 0.05, 0.1, 0.15, 0.2].tick do
+end
+
+sleep 40
+
+4.times do
+  sample :sn_dolf, amp: [0.7, 0.8, 0.9, 1].tick
+  sleep 0.2
+end
+
+in_thread do
+  100.times do
+    3.times do
       2.times do
-        sample :drum_heavy_kick, pan:  0.05
-        sleep 0.25
-        sample :drum_heavy_kick, pan:  0.05
-        sleep 0.25
+        sample :drum_bass_hard, pan:  0.05
+        sleep 0.5
+
       end
       1.times do
         #sleep 0.25
         #sample :drum_snare_hard
-        sample :drum_heavy_kick, pan:  0.05
+        #sample :drum_heavy_kick
         #sleep 0.25
-        sample :drum_cymbal_pedal
+        sample :drum_snare_hard, pan:  0.05
         sleep 1
+      end
+    end
+    1.times do
+      with_fx :pitch_shift, pitch: [0, 0.05, 0.1, 0.15, 0.2].tick do
+        2.times do
+          sample :drum_heavy_kick, pan:  0.05
+          sleep 0.25
+          sample :drum_heavy_kick, pan:  0.05
+          sleep 0.25
+        end
+        1.times do
+          #sleep 0.25
+          #sample :drum_snare_hard
+          sample :drum_heavy_kick, pan:  0.05
+          #sleep 0.25
+          sample :drum_cymbal_pedal
+          sleep 1
+        end
       end
     end
   end
