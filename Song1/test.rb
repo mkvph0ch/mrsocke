@@ -7,6 +7,32 @@ sample2 = :drum_cymbal_hard
 sample3 = :bd_zome
 
 
+a = 50
+b = 49.95
+myamp = [0.35, 0.4, 0.45, 0.5]
+offset = 10
+
+sleep 1
+
+in_thread do
+
+  4.times do
+    use_synth :hoover
+      play a=a-1, attack: 1, release: 100, amp: myamp.tick
+      play b=b-1, attack: 1, release: 100, amp: myamp.tick
+    sleep 1
+    use_synth :hollow
+      play a=a+offset+1, attack: 1, release: 100, amp: myamp.tick
+      play b=b+offset+1, attack: 1, release: 100, amp: myamp.tick
+    #play 80, amp: [1, 0.8, 0.5, 0.8].tick, release: 5
+    #play 79.95, amp: [1, 0.8, 0.5, 0.8].tick, release: 5
+    sleep 10
+  end
+end
+
+sleep 1
+
+
 # Fading in and out a sample
 # use_bpm 120
 #

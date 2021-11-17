@@ -59,8 +59,7 @@ sleep 40
   sleep 0.2
 end
 
-in_thread do
-  100.times do
+live_loop :drums do
     3.times do
       2.times do
         sample :drum_bass_hard, pan:  0.05
@@ -94,8 +93,8 @@ in_thread do
         end
       end
     end
-  end
 end
+
 
 in_thread do
   hihat 6,0
