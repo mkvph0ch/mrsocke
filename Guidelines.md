@@ -1,4 +1,4 @@
 # Guidlines
 
 - define use_bpm with variable
--> sleep and variable are connected
+-> sleep and variable are connected -> useful?
