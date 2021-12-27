@@ -1,5 +1,5 @@
 # mrsocke
-Adventures in SonicPi
+Adventures in SonicPi, where the soul seeks for answers
 
 ## Ruby Documentation
 https://www.ruby-lang.org/en/documentation/
